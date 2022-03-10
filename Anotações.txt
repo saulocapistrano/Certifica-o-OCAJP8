@@ -35,5 +35,57 @@ Definição de escopo de variáveis.
 	
 	#######Atenção: dentro de uma classe, pode haver vários métodos, porém só pode exitir um método main dentro da classe
 	*******Atenção: tomemos cuidado com loops for, pois as variáveis declaradas na área de inicialização do loop só pode ser usadas dentro do corpo do loop.  		
-	Parâmetros de métodos também podem ser considerados como variáveis locais ao método, ou seja só podem ser usadas dentro do método onde foram declaradas.   
+	Parâmetros de métodos também podem ser considerados como variáveis locais ao método, ou seja só podem ser usadas dentro do método onde foram declaradas.  
 
+	class Teste{
+		public void m1(String s){
+			System.out.println(s)
+		} 
+		public void m1(String s){
+			System.out.println(s) // erro de compilação
+		}
+	}
+
+*****************************************************************************
+
+	Variáveis de Instância
+	Variáveis de instância ou variáveis de objeto são os atributos dos objetos. São declaradas dentro da classe, maasssss... FORA  de qualquer método ou construtor. Podem ser acessadas por qualquer membro da classe e ficam em escopo enquanto o objeto existir.
+
+	class Pessoa{
+		String nome; 
+		public void SetNome(String n){
+			this.nome = n;
+		}
+	}
+
+****************************************************************************
+
+	Variáveis estáticas(class variable)
+	Podemos declarar variáveis que são compartilhadas por todas as instâncias de uma classe, usando a palavra chave *static*.
+	Essas variáveis estão no escopo da classe, e lá ficarão enquanto a classe estiver carregada na memória(enquanto o programa estiver rodando)
+	
+	class Person{
+		static int count = 1;
+	}	
+
+	No caso de variáveis static, não precisamos ter referência para usa-las e podemos acessá-las diretamente a partir da classe, desde que respeitando as regras de visibilidade da variável. Logo abaixo temos um exemplo disso.
+
+	class Person{ 
+		static int id = 15;
+	}
+	class Test{
+		public static void main(String[] args){
+		Person p = new Person();
+		System.out.println(p.id);// instanciando com referência acesso:15
+		System.out.println(Person.id);//instanciando com referênciaDaClasse
+		}
+	}
+
+	Visto que variáveis podem serAcessadas de duas maneiras, temos que tomar cuidado com aNomeclatura de variáveis.
+
+****************************************************************************
+
+	Variáveis comMesmoNome
+	NoSentidoLógico não é possívelDeclarar duas duas variáveis comMesmoNome.
+	
+	public
