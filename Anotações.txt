@@ -1,0 +1,39 @@
+****************Certificação Java 2022  Saulo Capistrano ********************
+
+Este estudo visou a minha plicação para certificação Java.
+
+
+Definição de escopo de variáveis.
+
+	O escopo é o que determina em que pontos do código uma vairável pode ser usada.
+
+	Variáveis locais:
+	Chamamos de variáveis locais as variáveis declaradas dentro de blocos, como dentro de métodos ou construtores.
+	O ciclos de vida de uma variável vai do ponto em que ela foi declarada, até o final do bloco onde foi declarada. 
+
+
+	Mas o que é um bloco?
+	Pode-se entender como bloco um trecho de código escrito entre chaves. 
+	Um bloco pode ser um método ou um construtor(um laço de repetição por exemplo).
+		
+		public void m1(){ // open to method
+			int x = 10; //declarete variable
+		}// method finish 
+
+*******************************************************************************
+
+		public void m1(){ // open to method 
+			int x = 10; //decalrete local variable in method 
+				
+			if ( x >= 10){ //open to if
+				int y=50;//local variable in if constructor
+				System.out.println(y); //output
+				}//finish if
+			} //finish method
+
+	Neste exemplo temos uma variável x declarada dentro de um método, essa variável pode ser utilizada dentro ou fora de um construtor, pode ser usada dentro de todo o método. Já a variável y foi declarada dentro do construtor if, logo ela só poderá ser usada dentro desse construtor.
+	
+	#######Atenção: dentro de uma classe, pode haver vários métodos, porém só pode exitir um método main dentro da classe
+	*******Atenção: tomemos cuidado com loops for, pois as variáveis declaradas na área de inicialização do loop só pode ser usadas dentro do corpo do loop.  		
+	Parâmetros de métodos também podem ser considerados como variáveis locais ao método, ou seja só podem ser usadas dentro do método onde foram declaradas.   
+
