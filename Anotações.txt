@@ -1,7 +1,11 @@
 ****************Certificação Java 2022  Saulo Capistrano ********************
 
-Este estudo visou a minha plicação para certificação Java.
+Este estudo visou a minha plicação para certificação Java OCAJP8.
 
+Parte 1: agradecimentos 
+Parte 2 Certificação?
+
+Parte 3 O básico de Java
 
 Definição de escopo de variáveis.
 
@@ -88,4 +92,310 @@ Definição de escopo de variáveis.
 	Variáveis comMesmoNome
 	NoSentidoLógico não é possívelDeclarar duas duas variáveis comMesmoNome.
 	
-	public
+	public void (){
+	int a = 0;
+	in a = 10; // erro de compilação
+	}
+
+	Porém, eventuamente, podemos ter variáveis em escopos diferentes que podem ser declaradas com o mesmo nome. Em casos em que possa haver ambiguidade na hora de declará-las o próprio compilador irá emitir um erro evitando a confusão. Não se pode declarar variáveis locais com o mesmo nome de parâmetors; assim como não se pode declarar variáveis de classe e de instância com mesmo nome.
+
+	public void method (String par){
+		int par=0; // erro de compilação
+		
+		System.out.println(par);
+	}
+
+****************************************************************************
+
+	Adiante, destaque-se que é possível declarar variáveis locais ou parâmetros com o mêsmo nome de variáveis de instância ou de classe. Chamamos isso de shadowing. Nesse sentido, éPossível resolver a ambiguidade: para variáveis de classe podemos referenciar pela própria classe, para variáveis de instância, usamos a palavra chave this.
+
+	class Person{ 
+		static int x = 0;
+			int y = 0;
+		public static void setX(int x){
+			Person.x = x;
+		}
+		public void setY(int y){
+			Person.y = y;
+		}
+	}
+	
+	Quando nãoUsamos o this ou nome daClasse para usar a variável o compilador sempre utilizará a variáve de menor escopo.
+
+***************************************************************************
+
+	Defina a estrutura de uma classe Java
+
+	Pacotes (package)
+	Pacotes servem para separar e organizar as diversas classes que temos em nosso sistema. Todas as classes pertencem a um pacote, caso o pacote não seja explicitamente declarado, a classe fará parte de um pacote default.
+	Todas as classes de um mesmo pacote se enchergam e podem ser utilizadas entre si. Para definir a qual pacote a que a classe pertence, usamos a palacra chave package, seguido do nome do pacote. Só pode existir umúnico pacote definido por arquivo,e ele deve ser a primeira instrução da classe.
+
+	Classe
+	Classe é a forma no java onde se define atributos e comportamentos de um objeto. O java é case sensitive, diferenciando na sua construção letras maiúsculas de minúsculas. 
+	Dentro de uma classe, podemos ter variáveis, métodos e construtores. Essas estruturas são chamadas de membros de classes.
+
+	ex:
+	class Pesson{
+	
+		String firstname;
+		String lastname;
+		
+		Person(String firstname,String lastname){
+			this.firstname =firstname;
+			this.lastname =lastname;
+			}
+		public String getFullName(){
+			return	this.firstname+this.lastname;
+			}
+		}
+
+	Nomes De Membros
+	Podemos ter membros de tipos diferentes dentro de uma mesma classe, e podem ter nomes iguais.
+	
+	ex:
+	class B{
+		String b;
+		B(){
+		}
+		String b(){
+			return null;
+			}
+		}
+
+	Variáveis 
+	A declaração de variáveis em java é bem simples, sempre vem o tipo seguido do nome da variável. Esses tipo de variável é o que se chama variável de instância, pois existirá uma cópia dela para cada objeto(classe) criado em nosso programa.
+	Existe ainda variáveis que não guardam valores ou referênciass para uma determinada instância, mas sim um valor compartilhado por todas as instâncias de objetos. Essas são variáveis estáticas, definidas com a palavra chave static. 
+	
+	Métodos
+	A declaração de métodos é um pouco diferente pois precisamos do tipo do retorno seguido do nome do método e seguido de parenteses, sendo que pode ou não haver parâmetros de entrada desse método. Cada parâmetroé uma declaração de variável em si. Essa linha do método onde está definido o retorno, o nome e os parãmetros, é onde temos a assinatura do método. A assinatura de um método inclui somente o nome do método e o tipo dos parâmetros. Os métodos, também podem ser static como as variáveis.  
+
+	Construtores
+	Uma classe pode possuir zero ou vários construtores. A principal diferença entre a declaração de um método e um construtor é que um construtor não tem retorno e possui o mesmo nome da classe.
+	Atenção, cuidado com os métodos que parecem construtores!
+	
+	ex: 
+	class Executor{
+		Executor(){ // construtor
+		}
+		void Executor(){ // método
+		} 
+  	}
+
+	Note que um construtor pode ter um return vazio
+	ex:
+	class Y{
+		int k = -1000;
+		x (int i){
+		if(i>k)
+			return; 
+			k=i;
+		}
+	}
+	Caso o valor seja menor ou igual a 1, o valor de k será -1000, caso contrário será o memso valor de i.
+	
+	Interfaces
+	Além das classes, também podemos declarar interfaces em nossos arquivosjava.  Para definir uma interface usamos a palavra chava Interface.
+	Ex:
+	interface Autenticacao{
+		final int PASSWORD_LENGTH = 8;
+		void autenticacao(String logon, String password); 
+	}
+
+	Em uma interface, devemos apenas definir a assinatura do método, sem a sua implementação. Além da assinatura também é possível declarar constantes em interfaces. 
+	
+	Multiplas estruturas em um arquivo.
+	Com java é possível definir mais de uma classe/interface em um mesmo arquivo java, embora devamos seguir algumas regras. 
+		*** podem ser definidos em qualquer ordem;
+		*** se existir alguma classe/interface pública, o nome do arquivo deve ser o mesmo dessa classe/interface;
+		*** só pode existir uma classe/interface pública por arquivo;
+		*** se não houver nenhuma classe/interface pública, o arquivo poder ter qualquer nome. 
+
+	As regras de pacotes e imports valem também para arquivos com multiplas estruturas definidas. caso exista a definição de um pacote, ela vale para todas as classes/interfaces definidas nesse arquivo e o mesmo vale para imports.
+
+
+
+***************************************************************************
+
+
+	Crie aplicações java executáveis com um método main e rode um programa Java na linha de comando.
+	
+	Extra matéria: 		Prompt de comandos (terminal)
+	O Java é totamente independente de IDE(netbeans, eclipse, sublime, visual studio, note pad ++, bloco de notas etc)
+	Ao iniciar o seu prompt de comandos, é possível que você verifique a versão do java, para isso, apenas digite o comando: 
+	java -version, assim você terá acesso a qual versão do java está sendo usada em sua máquina. 
+	Iniciando o prompt de comandos, o comando dir é usado para listar os diretórios existentes dentro da sua pasta raíz. O comando cd seguido do nome de uma pasta que esteja dentro do diretório que você está, faz com que você entre na referida pasta. 
+	
+	
+	Para criar um arquivo(que será uma classe) com conteúdo o comando é: 
+	echo >> nomeDoArquivoQueSeDesejaCriar.java e digitar o conteúdo que estará escrito dentro do arquivo. 	
+	
+	ex: 
+	prompt cmd
+	************************************************************************************************************************
+	*echo >> HelloWorld.java class HelloWorld { public static void main(String []args){ System.out.println("Hello World");}}*
+	************************************************************************************************************************
+
+	Seguindo este modelo, será criado um arquivo no formato txt com os parâmetros de escrita de uma classe java. Para criar uma classe que seja "compilavel" o arquivo deve ser salvo com final .java . 
+
+	Reforçando:
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	Uma classe executável é uma classe que possui um método inicial. Para a execução do programa esse método é o main, que será chamado pela JVM. Classes sem o método main, não são classes executáveis, assim, não podem ser utilizadas como ponto inicial da aplicação. 
+	O método de entrada, deve seguir algumas regras para ser executada pela JVM: 	
+	° ser público 
+	° ser estatico
+	° não ter retorno
+	° ter o nome main(sempre vai ser chamado main)
+	° receber como parâmetro um array ou varags de String (String[] ou String...)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	Para executar uma classe com main pela linha de comando, devemos compilar o arquivo com o comando javac(esse é o comando mesmo). 
+	Para executar a classe que resultou da compilação, devemos escrever o nome da classe seguido do comando java(esse é o comando mesmo).
+	No caso do exemplo dado anteriormente, a classe HelloWord deveria primeiro ser compilada com o comando: javac HelloWord. 
+	Após essa primeira compilação feita, é possível executar bastando apenas utilizar o comando: java HelloWord.    
+
+	Compilação e Execução 
+	Para criar um programa java, é preciso escrever um código-fonte e através de um compilador, gerar o executável(bytecode).
+	O compilador do JDK é o javac. 
+	Para a prova de certificação devemos conhecer o comportamento desse compilador. 
+	Atenção, a execução de um programa java se dará da seguinte forma: 
+	Primeiro a execução do bytecode é feita pela JVM. 
+
+	public class HelloWorld{
+		public static void main(String []args){
+			sysout...("Hello World!");
+		}
+	}
+	Dando continuidade ao que já foi mencionado anteriormente, o código será compilado e executado com os seguintes comandos no prompt:
+		
+	Prompt CMD
+		**************************************************************
+		*							     *
+		* javac HelloWorld.java					     *
+		*							     *
+		* java HelloWorld 					     *
+		*     							     *
+		* Hello World !  Saída					     *
+		*						             *
+		**************************************************************
+	
+	Novamente, para compilar a classe, passamos para o comando javac como parâmetro o nome do arquivo .java neste momento está havendo a compilação do arquivo.
+	Já para executar passamos apenas o nome da classe para o comando java.
+
+
+***************************************************************************
+	
+	Passando parâmetros pela linha de comando Prompt CMD
+	
+	Ao executar-mos uma classe pela linha de comando podemos passar parâmetros para o método main. 
+	Esses valores serão recebidos no array do método main. Por exemplo, vamos passar um nome para a classe HelloWorld. 
+	 
+	public class HelloWorld{
+		public static void main(String []args){
+			String arg = args[0];
+			sysout...("Hello"+ arg+ "!");
+		}
+	}
+
+	Para enviar o valor do parâmetro é só informa-lo APÓS o nome da classe que está sendo executada. 
+ 
+	Prompt CMD
+		**************************************************************
+		*							     *
+		* javac HelloWorld.java					     *
+		*							     *
+		* java HelloWorld Saulo 				     *	     
+		*     							     *
+		* Hello Saulo !  // saída					     *
+		*						             *
+		**************************************************************
+	
+	É possível enviar uma infinidade de parâmetros, o quanto você quiser, basta que separe-os com o espaço do teclado. Cada parâmetro informado será armazenado em uma posição do array, na mesma ordem que for informado. 
+
+*****************************************************************************************************************************************
+	Pausa para uma observação: Caro leitor, espero que esse estudo esteje servindo para lhe orientar, ou lhe ajudar de alguma forma em sua jornada de estudos com JAVA. Eu me chamo Saulo Capistranho, na data que estou compondo todo este estudo tenho 38 anos, iniciei na programação no ano de 2006 estudando e tentando executar alguns projetos de forma profissional, nada vingou até que em 2011 me afastei de vez da programação e entrei para o serviço público. Após dez anos, resolvi voltar, e aqui estou garimpando novos tempos com Java, essa linguagem maravilhosa que agora por fim, irei me qualificar da melhor forma. Espresso ainda minha gratidão a casa do código, pois estou estudando para essa certificação por uma apostila que achei no google da casa do código. Boa leitura!  
+*****************************************************************************************************************************************
+
+	Reforçando:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	Só mais um reforço sobre o método main:
+	O método main, dentro do java na prática do dia-a-dia durante o desenvolvimento de projetos acadêmicos, funciona como uma "autorização" para que a classe java seja executada.
+	Main(inicio) é condição preliminar para que possamos dizer que temos de fato uma classe executável(isso falando de java em nível de faculdade). Toda classe em java só é de fato uma classe executável se tive o método main declarado.
+	Novamente - o método main é o método de entrada de uma classe, e segue algumas regras em sua declaração:
+	Deve ser público - public;
+	Deve ser estático - estatic;
+	Deve ser um método sem retorno - void;
+	Tem que ser explícito em sua nomeclatura - main;(não temos opção de colocar outro nome em seu lugar);
+	Tem que receber um array de String - (Srtring[]args);
+	Na prática, as coisas ficam bem diferentes. Pois o método main na sua usabilidade passará a ser um método usado em testes unitários as j units. Ainda veremos o que são métodos recursivos mais a frente, que são métodos que executam eles próprios. 
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+***************************************************************************
+
+	O que é um bytecode?
+	É um arquivo executável! 
+	O bytecode é gerado a partir da compilação de um código fonte, que passou pelo compilador Javac. 
+	O compilador do Java Development Kit -JDK- é o javac.
+	
+	1° - o javac compila o fonte; 
+	2° - o fonte compilado gera um executável(já é o bytecode);
+	3° - o executável (bytecode) pode ser então executado pela Java Virtual Machine - JVM;
+	4° - o comando java invoca a JVM para executar o programa java.
+
+***************************************************************************
+
+	Comportamento do javac.
+	Imaginemos o arquivo Exam.java dentro de um diretório.
+	
+	prompt CMD
+	********************************************
+	* javac Exam.java			   *
+	********************************************
+	A partrir do comando acima executado, é criado um arquivo Exam.class(bytecode) que surgiu a partir da compilação feita com o javac.
+	No dia-a-dia, os projetos comerciais utilizam packages para organizar os fontes e os bytecodes gerados nas compilações. Isso implica dizer por exemplo que uma classe de cadastro de clietes em eventuais manutenções precisará ser novamente compilada para que o bytecode seja atualizado.  
+	
+	E como fica a compilação de um código fonte que está dentro de um pacote?
+	Veja:
+	Ex: 
+	package certificacao{
+		class Exame{
+		double timeLimit;
+	}
+
+	prompt CMD
+	********************************************
+	* javac certificacao/Exam.java	           *
+	********************************************
+	A partrir do comando acima executado, também é criado um arquivo Exam.class(bytecode) que surgiu a partir da compilação feita com o javac.
+
+	Na hora de compilar o código fonte é possível escolher a versão do java em que o código fonte foi escrito. 
+	Isso pode ser feito com a opção -source do comando javac. 
+	prompt CMD
+	********************************************
+	* javac certificacao/Exam.java -soucer 1.3 *
+	********************************************
+
+***************************************************************************
+
+	Comportamento do comando java
+	Agora vamos utilizar um exemplo para mostrar o funcionamento do comando java, criando o arquivo Teste.java no diretório do mesmo pacote descrito na sessão anterior.
+	 
+	package certificacao;
+	class teste {
+	public static void main(String[]args){
+	Teste p = new Teste ();	
+	p.timeLimit =210; // aqui os parâmetros de outra classe dentro do mesmo pacote estão sendo usadas como recursos para essa aplicação 
+	System.out...(p.timeLimit);
+	}
+	}
+	prompt CMD
+	********************************************
+	* javac certificacao/Teste.java            *
+	* java certificacao.Teste		   *
+	* 210.0 // saída 			   *	
+	********************************************
+	O resultado é a existência do arquivo Teste.class no diretório certificacao.
+	Neste caso, a classe Teste utilizou recurso da classe Exam que está em outro arquivo dentro do mesmo pacote, assim caso o compilador precise, ele irá compilar de forma automática o arquivo Exam.java. 
